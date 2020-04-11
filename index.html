@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Aplikasi Kasir Sederhana</title>
+    <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline';" />
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <script src="assets/js/bootstrap.min.js"></script>
+  </head>
+  <body>
+    <div class="container">
+        <div class="col-md-12">
+            <div class="row">
+                <div class="col-md-1"></div>
+                <div class="col-md-10" >
+                    <div class="row">
+                        <div class="jumbotron jumbotron-fluid">
+                            <div class="container">
+                            <div class="col-md-12 text-center">
+                                <h2>Aplikasi Kasir Sederhana</h2>
+                                <hr>
+                            </div>
+                            <div class="clear pd-10"></div>
+                            <div class="col-md-12">
+                                <form>
+                                    <div class="form-group row">
+                                      <label for="staticEmail" class="col-sm-3 col-form-label">Kode Barang</label>
+                                      <div class="col-sm-4">
+                                        <input type="text" class="form-control kode_barang" id="staticEmail" >
+                                      </div>
+                                    </div>
+                                    <div class="form-group row">
+                                      <label for="inputPassword" class="col-sm-3 col-form-label">Nama Barang</label>
+                                      <div class="col-sm-6">
+                                        <input type="text" class="form-control nama_barang" id="inputPassword" >
+                                      </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="inputPassword" class="col-sm-3 col-form-label">Harga</label>
+                                        <div class="col-sm-5">
+                                          <input type="text" class="form-control harga" id="inputPassword" >
+                                        </div>
+                                      </div>
+                                    <div class="form-group row">
+                                        <label for="inputPassword" class="col-sm-3 col-form-label">Jumlah</label>
+                                        <div class="col-sm-5">
+                                            <input type="number" class="form-control" minlength="0" id="jumlah_barang" >
+                                        </div>
+                                    </div>
+                                    <div class="form-group row" style="background-color: #FFD455;">
+                                        <label for="inputPassword" class="col-sm-3 col-form-label"><b>Total</b></label>
+                                        <div class="col-sm-5">
+                                            <h3>Rp. <span class="total_harga"></span></h3>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <div class="col-md-3">
+                                            <button type="button" id="button" class="btn btn-info btn-block">Bayar</button>
+                                        </div>
+                                        <div class="col-sm-5">
+                                            
+                                        </div>
+                                    </div>
+                                  </form>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-1"></div>
+            </div>
+        </div>
+    </div>
+    <script>
+        window.$ = window.jQuery = require("jquery");
+    </script>
+    <script>
+        $('#jumlah_barang').on('keyup', function(){
+            var jumlah_sekarang = $(this).val();
+            var total = jumlah_sekarang * $('.harga').val();
+            $('.total_harga').text(parseInt(total).toLocaleString());
+        });
+        $('#button').click(function(){
+            alert("Selamat, anda berhasil Belanja \n Kode Barang : "+$('.kode_barang').val()+" \n Nama Barang : "+$('.nama_barang').val()+" \n Harga Satuan : Rp."+$('.harga').val()+"  \n Jumlah Beli : "+$('#jumlah_barang').val()+" \n Total Belanja : Rp."+$('.total_harga').text()+" ");
+            $('.kode_barang').val('');
+            $('.nama_barang').val('');
+            $('.harga').val('');
+            $('#jumlah_barang').val('');
+            $('.total_harga').text("");
+        });
+    </script>
+  </body>
+</html>
